@@ -1,7 +1,4 @@
-import pandas as pd
-
-data = pd.read_csv("../data/template_data.txt", header=None)
-
-data = [[character for character in line] for line in data[0]]
-
+with open('../data/template_data.txt', 'r') as file:
+    data = [[character for character in line.strip()] for line in file]
+    
 print(data)
