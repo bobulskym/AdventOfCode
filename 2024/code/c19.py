@@ -13,28 +13,28 @@ for pattern in patterns:
 memory = {}
 
 def find_combinations(design):
-    if design not in memory:
-        
-        first_letter = design[0]
-        count = 0
-
-        if first_letter in patterns_grouped:
-            for pattern in patterns_grouped[first_letter]:
-                len_pattern = len(pattern)
-                len_design = len(design)
-                if len_pattern < len_design:
-                    if design[:len_pattern] == pattern:
-                        new_design = design[len_pattern:]
-                        count += find_combinations(new_design)
-                elif len_pattern == len_design:
-                    if design == pattern:
-                        count += 1
-        
-        memory[design] = count
-        return count
-    else:
+    
+    if design in memory:
         return memory[design]
+        
+    first_letter = design[0]
+    count = 0
 
+    if first_letter in patterns_grouped:
+        for pattern in patterns_grouped[first_letter]:
+            len_pattern = len(pattern)
+            len_design = len(design)
+            if len_pattern < len_design:
+                if design[:len_pattern] == pattern:
+                    new_design = design[len_pattern:]
+                    count += find_combinations(new_design)
+            elif len_pattern == len_design:
+                if design == pattern:
+                    count += 1
+    
+    memory[design] = count
+    return count
+        
 
 results = []
 for design in designs:
