@@ -47,11 +47,7 @@ for i in range(len(groups)):
 
 groups.sort(key = lambda g: len(g), reverse = True)
 longest = groups[0]
-
-result = ''
-for item in longest:
-    result += ',' + item
-result = result[1:]
+result = ','.join(longest)
 
 print("Part 2: " + result)
 
